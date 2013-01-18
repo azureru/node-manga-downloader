@@ -1,0 +1,19 @@
+{
+  "name"   : "manga-leecher",
+  "version": "0.0.1",
+  "private": true,
+  "authors": {
+      "name" : "Erwin Saputra <eru.saputra@gmail.com"
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "async" : "*",
+	  "request": "*",
+    "cheerio": "*",
+    "commander":"*",
+    "qs":"*",
+    "mkdirp": "*"
+  }
+}
