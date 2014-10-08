@@ -3,7 +3,6 @@ var	async    = require('async'),
 	string   = require('../utility/string.js'),
 	urlParse = require('url'),
 	cheerioFetch  = require('../utility/cheerio_fetch.js');
-	jsdomFetch    = require('../utility/jsdom_fetch.js');
 
 function KissManga() {
 
@@ -37,7 +36,7 @@ function KissManga() {
 							if (attrs.length > 2) {
 								result.attributes[attrs[1].fulltrim()] = attrs[2];
 							}
-						}									
+						}
 					});
 
 					// chapter list matching
@@ -48,24 +47,24 @@ function KissManga() {
 						result.volumes.push({
 							'idx': elements.length - i,
 							'url': parsed.protocol + '//' + parsed.host + itemUrl
-						});						
-					});		
+						});
+					});
 
 					// sort the chapters ASC since kissmanga sort it DESC by default
 					result.volumes.sort(function(a,b ){
 						return a.idx - b.idx;
-					});			
+					});
 
 					resultCallback(null, result);
 				} catch (e) {
 					// exception in processing, error callback
-					resultCallback(e);	
-				} 
+					resultCallback(e);
+				}
 			} else {
 				// http error, do error callback!
 				resultCallback(error);
 			}
-		});	
+		});
 	}
 
     /*
@@ -89,7 +88,7 @@ function KissManga() {
 					// pages
 					var select = $('script').text();
 
-					// check for image inside javascripts 
+					// check for image inside javascripts
 					var matches = [];
 					var i=0;
     				select.replace(/lstImages.push\(\"\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))/ig, function(url) {
@@ -106,8 +105,8 @@ function KissManga() {
 				}
 			} else {
 				resultCallback(error);
-			}			
-		});	
+			}
+		});
 	}
 }
 

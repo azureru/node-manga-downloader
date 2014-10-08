@@ -3,7 +3,6 @@ var	async    = require('async'),
 	string   = require('../utility/string.js'),
 	urlParse = require('url'),
 	cheerioFetch  = require('../utility/cheerio_fetch.js');
-	jsdomFetch    = require('../utility/jsdom_fetch.js');
 
 function MangaHere() {
 
@@ -36,7 +35,7 @@ function MangaHere() {
 							if (attrs.length > 2) {
 								result.attributes[attrs[1]] = attrs[2];
 							}
-						}									
+						}
 					});
 
 					// chapter list matching
@@ -46,29 +45,29 @@ function MangaHere() {
 						result.volumes.push({
 							'idx': elements.length - i,
 							'url': url
-						});						
-					});		
+						});
+					});
 
 					// sort the chapters ASC since mangahere sort it DESC by default
 					result.volumes.sort(function(a,b ){
 						return a.idx - b.idx;
-					});			
+					});
 
 					resultCallback(null, result);
 				} catch (e) {
 					// exception in processing, error callback
-					resultCallback(e);	
-				} 
+					resultCallback(e);
+				}
 			} else {
 				// http error, do error callback!
 				resultCallback(error);
 			}
-		});	
+		});
 	}
 
     /*
      * To parse volume view page and return json structure
-     * 
+     *
      */
 	this.parseVolumePages = function (url, resultCallback) {
 		var result = {
@@ -104,7 +103,7 @@ function MangaHere() {
 			} else {
 				resultCallback(error);
 			}
-		});	
+		});
 	}
 
  	/**
@@ -116,14 +115,14 @@ function MangaHere() {
 				try {
 					$ = cheerio.load(body);
 					var img = $('.read_img img');
-					resultCallback(null, img.attr('src'));	
+					resultCallback(null, img.attr('src'));
 				} catch (e) {
-					resultCallback(error);		
+					resultCallback(error);
 				}
 			} else {
-				resultCallback(error);	
+				resultCallback(error);
 			}
-		});		
+		});
 	}
 
 	this.downloadManga = function(url, volumeStart, volumeEnd) {

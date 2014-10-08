@@ -12,11 +12,10 @@
     "async"    : "*",
     "cheerio"  : "*",
     "commander": "*",
-    "jsdom"    : "*",
     "mkdirp"   : "*",
-    "node-zip" : "*",    
+    "node-zip" : "*",
     "qs"       : "*",
-    "request"  : "2.16.2", 
+    "request"  : "2.16.2",
     "fs-extra" : "0.5.0"
   }
 }
